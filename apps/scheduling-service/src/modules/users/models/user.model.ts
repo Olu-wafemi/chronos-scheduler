@@ -4,7 +4,10 @@ import {Field, FIELD_RESOLVER_MIDDLEWARE_METADATA, ID, ObjectType } from '@nestj
 
 export class User {
     @Field(() => ID)
-    id: string;;
+    id: string;
+
+    @Field()
+    username: string
 
     @Field()
     email: string
@@ -13,10 +16,10 @@ export class User {
     name: string
 
     @Field()
-    timeZone: string
+    timeZone?: string
 
     @Field()
-    createdAt: string
+    createdAt: Date
 
     @Field()
     updatedAt: Date

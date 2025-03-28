@@ -4,6 +4,13 @@ import {IsEmail, IsNotEmpty, IsString} from 'class-validator'
 
 @InputType()
 export class CreateUSerInput{
+
+    @Field()
+    @IsString()
+    @IsNotEmpty()
+    username: string
+
+
     @Field()
     @IsEmail()
     @IsNotEmpty()
@@ -16,5 +23,11 @@ export class CreateUSerInput{
 
     @Field({nullable: true, defaultValue: "UTC"})
     @IsString()
-    timeZone?: string
+    timeZone: string
+
+    @Field()
+    @IsNotEmpty()
+    createdAt: Date
+
+    
 }
