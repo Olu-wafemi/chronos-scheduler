@@ -24,7 +24,7 @@ export class CalendarsService {
     }
 
     async findCalenderById(id: string): Promise<Calender| null>{
-        const calender = await this.prismma.calnder.findUnique({
+        const calender = await this.prisma.calendar.findUnique({
             where: {id},
             include:{
                 owner: true,
@@ -38,7 +38,7 @@ export class CalendarsService {
     }
 
     async findUserCalenders(userId: string): Promise<Calender[]> {
-        return this.prisma.calender.findMany({
+        return this.prisma.calendar.findMany({
             where: {id: userId},
             include:{
                 owner: true
