@@ -1,14 +1,14 @@
-import {Injectable, NotFoundException} from '@nestjs/common'
-import { PrismaService } from 'src/prisma/prisma.service' 
-import { CreateCalenderInput } from './dto/create-calender.input'
-import { Calender } from './models/calender.model'
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from '../../prisma/prisma.service';
+import { CreateCalenderInput } from './dto/create-calender.input';
+import { Calender } from './models/calender.model';
 
 @Injectable()
 export class CalendarsService {
-    constructor(private prisma: PrismaService){}
+    constructor(private prisma: PrismaService) {}
 
     async createCalender(ownerId: string, data: CreateCalenderInput): Promise<Calender>{
-        return this.prisma.calender.create({
+        return this.prisma.calendar.create({
             data: {
                 ...data,
                 owner:{
