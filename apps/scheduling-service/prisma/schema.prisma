@@ -46,7 +46,12 @@ model Event  {
   description String?
   startTime   DateTime
   endTime DateTime
-  status    EventStatus  @default(SCHEDULED)
+  location String?
+  recurrenceRule String?
+  isAllDay Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
   calenderId String
 
   calender Calendar @relation(fields: [calenderId], references: [id])
@@ -54,9 +59,3 @@ model Event  {
 
 
 
-enum EventStatus {
-  SCHEDULED
-  CONFIRMED
-  CANCELLED
-
-}

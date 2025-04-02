@@ -1,28 +1,25 @@
-import {Field, FIELD_RESOLVER_MIDDLEWARE_METADATA, ID, ObjectType } from '@nestjs/graphql'
+import { Field, ID, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
-
 export class User {
     @Field(() => ID)
     id: string;
 
     @Field()
-    username: string
+    username: string;
 
     @Field()
-    email: string
+    email: string;
 
     @Field()
-    name: string
+    name: string;
 
     @Field()
-    timeZone?: string
+    timeZone?: string;
 
     @Field()
-    createdAt: Date
+    createdAt: Date;
 
     @Field()
-    updatedAt: Date
-
-
+    updatedAt: Date;
 }

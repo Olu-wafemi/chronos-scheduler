@@ -7,42 +7,40 @@ import { Calender } from './models/calender.model';
 export class CalendarsService {
     constructor(private prisma: PrismaService) {}
 
-    async createCalender(ownerId: string, data: CreateCalenderInput): Promise<Calender>{
+    async createCalender(ownerId: string, data: CreateCalenderInput): Promise<Calender> {
         return this.prisma.calendar.create({
             data: {
                 ...data,
-                owner:{
-                    connect: {id: ownerId}
+                owner: {
+                    connect: { id: ownerId }
                 }
-            }
-            ,
-            include:{
+            },
+            include: {
                 owner: true
             }
-
-        })
+        });
     }
 
-    async findCalenderById(id: string): Promise<Calender| null>{
+    async findCalenderById(id: string): Promise<Calender | null> {
         const calender = await this.prisma.calendar.findUnique({
-            where: {id},
-            include:{
+            where: { id },
+            include: {
                 owner: true,
                 events: true
             }
-        })
-        if(!calender){
-            throw new NotFoundException(`Calender with ID ${id} not found`)
+        });
+        if (!calender) {
+            throw new NotFoundException(`Calender with ID ${id} not found`);
         }
-        return calender
+        return calender;
     }
 
     async findUserCalenders(userId: string): Promise<Calender[]> {
         return this.prisma.calendar.findMany({
-            where: {id: userId},
-            include:{
+            where: { id: userId },
+            include: {
                 owner: true
             }
-        })
+        });
     }
 }

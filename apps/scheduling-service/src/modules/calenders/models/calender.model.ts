@@ -1,33 +1,33 @@
-import {Field, ID, ObjectType} from '@nestjs/graphql'
-import {User} from '../../users/models/user.model'
-import {Event } from '../../events/models/event.model'
+import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { User } from '../../users/models/user.model';
+import { Event } from '../../events/models/event.model';
 
 @ObjectType()
-export class Calender{
+export class Calender {
     @Field(() => ID)
-    id: string
+    id: string;
 
     @Field()
     name: string;
 
     @Field()
-    description: string
+    description: string;
 
     @Field()
-    color: string
+    color: string;
 
-    @Field(()=> User)
-    owner: User
-
-    @Field()
-    ownerId: string
-
-    @Field(()=> [Event], {nullable: true})
-    events?: Event[]
+    @Field(() => User)
+    owner: User;
 
     @Field()
-    createdAt: Date
+    ownerId: string;
+
+    @Field(() => [Event], { nullable: true })
+    events?: Event[];
 
     @Field()
-    updatedAt: Date
+    createdAt: Date;
+
+    @Field()
+    updatedAt: Date;
 }
