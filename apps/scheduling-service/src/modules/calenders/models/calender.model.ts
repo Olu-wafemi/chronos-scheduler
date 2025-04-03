@@ -4,30 +4,30 @@ import { Event } from '../../events/models/event.model';
 
 @ObjectType()
 export class Calender {
-    @Field(() => ID)
-    id: string;
+  @Field(() => ID)
+  id: string;
 
-    @Field()
-    name: string;
+  @Field()
+  name: string;
 
-    @Field()
-    description: string;
+  @Field({ nullable: true })
+  description: string | null;
 
-    @Field()
-    color: string;
+  @Field()
+  color: string;
 
-    @Field(() => User)
-    owner: User;
+  @Field(() => User)
+  owner: User;
 
-    @Field()
-    ownerId: string;
+  @Field()
+  ownerId: string;
 
-    @Field(() => [Event], { nullable: true })
-    events?: Event[];
+  @Field(() => [Event], { nullable: true })
+  events?: Event[];
 
-    @Field()
-    createdAt: Date;
+  @Field()
+  createdAt: Date;
 
-    @Field()
-    updatedAt: Date;
+  @Field()
+  updatedAt: Date;
 }
