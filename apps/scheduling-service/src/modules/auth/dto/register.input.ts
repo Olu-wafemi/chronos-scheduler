@@ -9,6 +9,11 @@ export class RegisterInput {
 
   @Field()
   @IsNotEmpty()
+  @IsString()
+  username: string;
+
+  @Field()
+  @IsNotEmpty()
   @MinLength(6)
   password: string;
 
